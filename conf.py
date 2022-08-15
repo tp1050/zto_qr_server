@@ -5,5 +5,5 @@ class Conf(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     HOST='0.0.0.0'
-    PORT=5000
-    SERVER_NAME='192.168.2.66:5000'
+    PORT=8700
+    SERVER_NAME='192.168.2.66:8700'

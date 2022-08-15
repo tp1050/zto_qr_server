@@ -8,7 +8,7 @@ from qr_cls import dool_qr
 from flask import send_file
 
 from dool import app,now
-from koon import serve_pil_image
+# from koon import serve_pil_image
 
 @app.route("/")
 def hello_world():
@@ -42,10 +42,30 @@ def qrIP():
         ip = request.environ['REMOTE_ADDR']
     else:
         ip = request.environ['HTTP_X_FORWARDED_FOR'] # if behind a proxy
+    from qr_cls import dool_qr
+    file_name=dool_qr(data=ip).qr()
+    return f"<html>{file_name}</html>"
+
+@app.route('/qrs',methods=['GET','POST'])
+def qr():
+    import glob
+    qrlist=glob.glob('*.jpg')
+    return f"<html>{qrlist}</html>"
+
+@app.route('/qrSHOW',methods=['GET','POST'])
+def qrSHOW():
+    from flask import send_file
+    import pathlib
+    p=pathlib.Path().resolve()
+
+    qrlist=list(p.glob('*.jpg'))
+    return send_file(qrlist[0])
+
+
 
     # if request.args.get('show_qr') == '1':
     #     ret = dool_qr(data=ip).qr()
     # else:
     #     pass
     # qr_image = dool_qr().qr(data=file_)
-    return serve_pil_image(dool_qr(data=ip).qr())
+    # return serve_pil_image(dool_qr(data=ip).qr())
