@@ -54,12 +54,14 @@ def qr():
 
 @app.route('/qrSHOW',methods=['GET','POST'])
 def qrSHOW():
-    from flask import send_file
-    import pathlib
-    p=pathlib.Path().resolve()
-
-    qrlist=list(p.glob('*.jpg'))
-    return send_file(qrlist[0])
+    # from flask import send_file
+    # import pathlib
+    # p=pathlib.Path().resolve()
+    #
+    # qrlist=list(p.glob('*.jpg'))
+    # return send_file(qrlist[0])
+    from koon import img_lister
+    return img_lister()
 
 
 
