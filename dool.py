@@ -2,11 +2,12 @@
 
 #dool.py
 
-
+from conf import Conf
 from flask import Flask
 import logging
 from datetime import datetime
-app = Flask(__name__)
+app = Flask('Zortom')
+app.config.from_object(Conf)
 now=datetime.now
 
 
