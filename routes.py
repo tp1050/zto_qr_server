@@ -1,13 +1,16 @@
 
+#sysport
 from flask import Flask
 from flask import request
 from flask import jsonify
 import json
 import logging
-from qr_cls import dool_qr
 from flask import send_file
 
+#userport
 from dool import app,now
+from qr_cls import dool_qr
+
 # from koon import serve_pil_image
 
 @app.route("/")
@@ -52,22 +55,20 @@ def qr():
     qrlist=glob.glob('*.jpg')
     return f"<html>{qrlist}</html>"
 
-@app.route('/qrSHOW',methods=['GET','POST'])
-def qrSHOW():
-    # from flask import send_file
-    # import pathlib
-    # p=pathlib.Path().resolve()
-    #
-    # qrlist=list(p.glob('*.jpg'))
-    # return send_file(qrlist[0])
-    from koon import img_lister
-    return img_lister()
-
-
-
-    # if request.args.get('show_qr') == '1':
-    #     ret = dool_qr(data=ip).qr()
-    # else:
-    #     pass
-    # qr_image = dool_qr().qr(data=file_)
-    # return serve_pil_image(dool_qr(data=ip).qr())
+# @app.route('/qrSHOW',methods=['GET','POST'])
+# def qrSHOW():
+#     # from flask import send_file
+#     # import pathlib
+#     # p=pathlib.Path().resolve()
+#     #
+#     # qrlist=list(p.glob('*.jpg'))
+#     # return send_file(qrlist[0])
+#
+#
+#
+#     # if request.args.get('show_qr') == '1':
+#     #     ret = dool_qr(data=ip).qr()
+#     # else:
+#     #     pass
+#     # qr_image = dool_qr().qr(data=file_)
+#     # return serve_pil_image(dool_qr(data=ip).qr())
